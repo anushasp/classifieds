@@ -22,12 +22,32 @@
         }
     </style>
 </head>
-<body>    
+<body>  
+    
+    Search: <input type="text" id="search" name="search"/> 
+            <button onclick="searchAds()">Go</button>
+            <script src="searchads.js"></script>
+    
     <script src="ads.js"></script>
     <div>
         <table id="table1">
         </table>
-    </div>   
+    </div>  
+    
+       Addid:<input type="number" id="adsid" name="adsid"  /> <br/>
+       Addname: <input type="text" id="name" name="adsname"  /> <br/>
+       Description:<input type="text" id="description" name="description" /> <br />
+       price: <input type="number" id="price" name="price"  /> <br />
+       image-1: <input type="text" id="image0" name="image[0]"  /> <br />
+       image-2: <input type="text" id="image1" name="image[1]"  /> <br />
+       image-3: <input type="text" id="image2" name="image[2]"  /> <br />
+       <button onclick="addAds()">Add Ads</button>
+        <button onclick="editAds()">Edit Ads</button>
+    
+    <script src="addads.js"></script>
+<script src="editadds.js"></script>
+    
+
 
 </body>
 </html>

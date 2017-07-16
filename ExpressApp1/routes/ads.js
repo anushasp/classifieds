@@ -13,17 +13,92 @@ router.get('/:adsId', function (req, res) {
     var ads = fetchAds();
     var adsId = req.params.adsId;
     for (var i = 0; i < ads.length; i++) {
-        if (ads[i].adsId == adsId) {
+        if (ads[i].adsid == adsId) {
             res.send(JSON.stringify(ads[i]));
         }
     }
     res.send("Not Found");
 });
 
-router.post('/addads', function (req, res) {
-  
+router.post('/addad', function (req, res) {
+    if (req.body.adsname && +req.body.price > 0) {
+        var ads = fetchAds();
+        var images = [];
+        var img = req.body.imageUrl;
+        images = img.split(",");
 
 
+        var ad = {
+            adsid: ads.length + 1,
+            adsname: String(req.body.adsname),
+            description: String(req.body.description),
+            created: new Date().valueOf(),
+            imageUrl: images,
+            price: +req.body.price
+        };
+        ads.push(ad);
+        saveAds(ads);
+        res.send("pass");
+        return;
+    }
+    res.send("fail");
+
+});
+router.post('/searchad', function (req, res) {
+    if (req.body.searchAd) {
+        var ads = fetchAds();
+        var adsname = req.body.searchAd;
+        for (var i = 0; i < ads.length; i++) {
+            if (ads[i].adsname == adsname) {
+                res.send(ads[i]["adsid"]);
+            }
+        }
+    }
+        res.send("Not Found");
+    });
+
+
+router.post('/editad', function (req, res) {
+    var ads = fetchAds();
+    var images = [];
+    var img = req.body.imageUrl;
+    images = img.split(",");
+    var adsid = req.body.adsid;
+    for (var i = 0; i < ads.length; i++) {
+
+        if (ads[i].adsid == adsid) {
+            var adsedit = ads[i];
+            var ad = {
+                adsid: adsid,
+                adsname: String(req.body.adsname),
+                description: String(req.body.description),
+                created: new Date().valueOf(),
+                imageUrl: images,
+                price: +req.body.price
+            };
+            for (var key in adsedit) {
+                if (ad[key] != "") {
+                    if (key == "imageUrl") {
+                        if (ad[key][0] != "") {
+                            adsedit[key][0] = ad[key][0];
+                        }
+                        if (ad[key][1] != "") {
+                            adsedit[key][1] = ad[key][1];
+                        }
+                        if (ad[key][2] != "") {
+                            adsedit[key][2] = ad[key][2];
+                        }
+                    } else {
+                        adsedit[key] = ad[key];
+                    }
+                }
+            }
+            saveAds(ads);
+            res.send("pass");
+            return;
+        }
+    }
+    res.send("fail");
 
 });
 
