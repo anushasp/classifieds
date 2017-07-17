@@ -1,0 +1,61 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+
+
+
+<div ng-controller="homeController">
+
+    <div>
+        Search: <input type="text" ng-model="search" />
+        <button ng-click="searchAds()">Go</button>
+    </div>
+    <table>
+        <tr>
+            <th>Ad-Id</th>
+            <th>Ad-Name</th>
+            <th>Description</th>
+            <th>Price($)</th>
+            <th>Image-1</th>
+            <th>Image-2</th>
+            <th>Image-3</th>
+        </tr>
+        <tr ng-repeat="ad in ads" ng-click="onClickAd(ad)">
+            <td>{{ad.adsid}}</td>
+            <td>{{ad.adsname}}</td>
+            <td>{{ad.description}}</td>
+            <td>{{ad.price}}</td>
+            <td><img ng-src="{{ad.imageUrl[0]}}"></img>
+            </td>
+            <td><img ng-src="{{ad.imageUrl[1]}}"></img>
+            </td>
+            <td><img ng-src="{{ad.imageUrl[2]}}"></img>
+            </td>
+        </tr>
+    </table>
+    <div>
+        Add-Id:<input type="number" ng-model="adsid" /> <br/> Add-Name: <input type="text" ng-model="adsname" /> <br/> Description:
+        <input type="text" ng-model="description" /> <br /> Price($): <input type="number" ng-model="price" /> <br /> Image-1:
+        <input type="text" ng-model="image0" /> <br /> Image-2: <input type="text" ng-model="image1" /> <br /> Image-3: <input
+            type="text" ng-model="image2" /> <br />
+        <button ng-click="addAds()">Add Ad</button>
+        <button ng-click="editAds()">Edit Ad</button>
+    </div>
+</div>

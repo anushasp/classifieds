@@ -23,17 +23,14 @@ router.get('/:adsId', function (req, res) {
 router.post('/addad', function (req, res) {
     if (req.body.adsname && +req.body.price > 0) {
         var ads = fetchAds();
-        var images = [];
-        var img = req.body.imageUrl;
-        images = img.split(",");
-
+        
 
         var ad = {
             adsid: ads.length + 1,
             adsname: String(req.body.adsname),
             description: String(req.body.description),
             created: new Date().valueOf(),
-            imageUrl: images,
+            imageUrl: req.body.imageUrl,
             price: +req.body.price
         };
         ads.push(ad);
@@ -50,7 +47,7 @@ router.post('/searchad', function (req, res) {
         var adsname = req.body.searchAd;
         for (var i = 0; i < ads.length; i++) {
             if (ads[i].adsname == adsname) {
-                res.send(ads[i]["adsid"]);
+                res.send({"id":ads[i]["adsid"]});
             }
         }
     }
@@ -60,9 +57,7 @@ router.post('/searchad', function (req, res) {
 
 router.post('/editad', function (req, res) {
     var ads = fetchAds();
-    var images = [];
-    var img = req.body.imageUrl;
-    images = img.split(",");
+   
     var adsid = req.body.adsid;
     for (var i = 0; i < ads.length; i++) {
 
@@ -73,19 +68,19 @@ router.post('/editad', function (req, res) {
                 adsname: String(req.body.adsname),
                 description: String(req.body.description),
                 created: new Date().valueOf(),
-                imageUrl: images,
+                imageUrl: req.body.imageUrl,
                 price: +req.body.price
             };
             for (var key in adsedit) {
-                if (ad[key] != "") {
+                if (ad[key]!= "" && ad[key] != "undefined") {
                     if (key == "imageUrl") {
-                        if (ad[key][0] != "") {
+                        if (ad[key][0] != "" && ad[key][0] != null) {
                             adsedit[key][0] = ad[key][0];
                         }
-                        if (ad[key][1] != "") {
+                        if (ad[key][1] != "" && ad[key][1] != null) {
                             adsedit[key][1] = ad[key][1];
                         }
-                        if (ad[key][2] != "") {
+                        if (ad[key][2] != "" && ad[key][2] != null) {
                             adsedit[key][2] = ad[key][2];
                         }
                     } else {
@@ -103,12 +98,12 @@ router.post('/editad', function (req, res) {
 });
 
 function fetchAds() {
-    var jsonString = fs.readFileSync(path.join(__dirname, "..", "public", "ads.json"), "utf8").trim();
+    var jsonString = fs.readFileSync(path.join(__dirname, "ads.json"), "utf8").trim();
     var ads = JSON.parse(jsonString);
     return ads;
 }
 function saveAds(ads) {
 
-    fs.writeFileSync(path.join(__dirname, "..", "public", "ads.json"), JSON.stringify(ads));
+    fs.writeFileSync(path.join(__dirname, "ads.json"), JSON.stringify(ads));
 }
 module.exports = router;

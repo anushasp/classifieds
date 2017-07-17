@@ -73,13 +73,13 @@ router.get('/', function (req, res) {
     });
 
     function fetchUsers() {
-        var jsonString = fs.readFileSync(path.join(__dirname, "..", "public", "users.json"), "utf8").trim();
+        var jsonString = fs.readFileSync(path.join(__dirname, "users.json"), "utf8").trim();
         var users = JSON.parse(jsonString);
         return users;
     }
 
     function saveUsers(users) {
-        fs.writeFileSync(path.join(__dirname, "..", "public", "users.json"), JSON.stringify(users));
+        fs.writeFileSync(path.join(__dirname, "users.json"), JSON.stringify(users));
     }
 
 
