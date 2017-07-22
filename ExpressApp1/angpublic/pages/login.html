@@ -1,7 +1,43 @@
 <div ng-controller="loginController" class="login">
+
+    <h1> Classifieds - The best Ad's are here! </h1>
     <h2>Login</h2>
-    <input type="text" ng-model="username" placeholder="Username" ><br>
+    <input type="text" ng-model="username" placeholder="Username"><br>
     <input type="password" ng-model="password" placeholder="Password"><br>
     <button ng-click="login()" class="btn btn-primary btn-block btn-large">Login</button></br>
     <button ng-click="registration()" class="btn btn-primary btn-block btn-large">Registration</button>
+</div>
+
+<div ng-controller="usermodcontroller">
+    <h2>List of users</h2>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Actions</th>
+
+        </tr>
+        <tr ng-repeat="user in users">
+            <td> {{user.name}}</td>
+            <td> {{user.email}}</td>
+            <td> {{user.gender}}</td>
+            
+            <td><a href="javascript://Edit the user" ng-click="edit(user.name)">[edit]</a>
+                <a href="javascript://" ng-click="view(user.name)">[view]</a></td>
+        </tr>
+
+    </table>
+
+    <form ng-hide="!user">
+        Username:<input type="hidden" ng-model="user.name" /> 
+        Email:
+        <input type="text" ng-model="user.email"/> 
+        Gender:
+        <select ng-model="user.gender">
+        <option ng-repeat="g in genders" ng-value="g.id">{{g.name}}</option>
+
+        </select>
+    </form>
+
 </div>

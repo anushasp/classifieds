@@ -13,6 +13,14 @@ router.get('/', function (req, res) {
     return;
 });
 
+router.get('/genders',function(req,res){
+var genders={
+    "F":"female",
+    "M":"male",
+    "U":"unspecified"
+};
+res.send(JSON.stringify(genders));
+});
 
 router.get('/current', function (req, res) {
     var username = req.session.login;
@@ -127,6 +135,11 @@ router.post("/login", function (req, res) {
 });
 
 
+function fetchUsers() {
+    var jsonString = fs.readFileSync(path.join(__dirname, "users.json"), "utf8").trim();
+    var users = JSON.parse(jsonString);
+    return users;
+}
 
 router.post('/addmessages', function (req, res) {
     var username = req.body.owner;
