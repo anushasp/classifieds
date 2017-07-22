@@ -17,6 +17,9 @@ app.controller("addDetailsController", function ($scope, $http, $state, $statePa
             $scope.img1=res.data.imageUrl[1];
             $scope.img2=res.data.imageUrl[2];
             $scope.created=res.data.created;
+            $scope.owner=res.data.owner;
+            $scope.contact=res.data.contact;
+
         });
     
 

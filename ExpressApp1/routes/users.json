@@ -1,1 +1,41 @@
-[{"name":"User1","email":"User1@gmail.com","password":"12345"},{"name":"User2","email":"User2@gmail.com","password":"123456"},{"name":"User3","email":"User3@gmail.com","password":"1234567"},{"name":"User4","email":"User4@gmail.com","password":"12345678"},{"name":"Administrator","password":"12345","created":1500070428818},{"name":"asdad","password":"asdasd","created":1500071002369},{"name":"asdaddfd","password":"12345","created":1500071092241},{"name":"wrewrret","password":"12345","created":1500071132566},{"name":"sadasd","password":"12345","created":1500071276979},{"name":"dsrewrr","password":"12345","created":1500071317966},{"name":"23w443","password":"12345","created":1500074394782},{"name":"123234","password":"12345","created":1500075475578},{"name":"sadsdfsdf","password":"12345","created":1500075524282},{"name":"rama","password":"12345","email":"ramaraju.guduri@gmail.com","created":1500077793278},{"name":"ramaguduri","password":"12345","email":"ramaraju.guduri@gmail.com","created":1500077892512},{"name":"saripella","password":"12345","email":"saripella@gmail.com","created":1500077972243},{"name":"User13","password":"12345","email":"User13@gmail.com","created":1500245504489},{"name":"User14","password":"12345","email":"User14@gmail.com","created":1500245601209},{"name":"User15","password":"12345","email":"User15@gmail.com","created":1500245798999},{"name":"User16","password":"12345","email":"User16@gmail.com","created":1500245908854},{"name":"User17","password":"12345","email":"User17@gmail.com","created":1500245933239},{"name":"jagan","password":"12345","email":"aaa@a.com","created":1500248285867}]
+[
+    {
+        "name": "Anusha",
+        "email": "anusha.saripella90@gmail.com",
+        "password": "12345",
+        "admin": true,
+        "gender":"M"
+    },
+    {
+        "name": "user1",
+        "password": "12345",
+        "email": "a@gmail.com",
+        "created": 1500432080518,
+        "admin": false,
+        "gender":"M"
+    },
+    {
+        "name": "qa",
+        "password": "12345",
+        "email": "q@q.com",
+        "created": 1500439012608,
+        "admin": false,
+        "gender":"M"
+    },
+    {
+        "name": "sneha",
+        "password": "12345",
+        "email": "snehanm@gmail.com",
+        "created": 1500484835763,
+        "admin": false,
+        "gender":"F"
+    },
+    {
+        "name": "user2",
+        "password": "12345",
+        "email": "user2@gmail.com",
+        "created": 1500506442676,
+        "admin": false,
+        "gender":"F"
+    }
+]
