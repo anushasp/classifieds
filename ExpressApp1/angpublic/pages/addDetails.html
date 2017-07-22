@@ -32,5 +32,28 @@
 <div ng-model="date"> </div>
 {{created}} <br/><br/>
 
+<b> Owner</b>
+<div ng-model="owner"> </div>
+{{owner}} <br/><br/>
+
+<b> Contact the Owner</b></br>
+
+<a ng-href="mailto:{{contact}}">{{contact}}</a><br/><br/>
+
+    <b>customer comments</b>
+    <div ng-repeat="comment in comments">{{comment}}</div>  <br /><br />
+
+
+    <b> Enter your comments</b>
+    <textarea ng-model="comment">Enter text here...</textarea>
+    <button ng-click="addcom()">submit</button> <br /><br /><br />
+
+    <b> Message to owner</b>
+    <textarea ng-model="inbox">Enter text here...</textarea>
+    <button ng-click="addmsg()">submit</button> <br /><br /><br />
+
+
+
+
 
 </div>

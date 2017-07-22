@@ -21,12 +21,13 @@
 
 
 
-<div ng-controller="homeController">
+<div ng-controller="homeController" >
 
     <div>
-        Search: <input type="text" ng-model="search" />
+        Search Ad by Name: <input type="text" ng-model="search" />
         <button ng-click="searchAds()">Go</button>
-    </div>
+        <button ng-click="logout()">Logout</button>
+    </div> </br> </br>
     <table>
         <tr>
             <th>Ad-Id</th>
@@ -49,13 +50,24 @@
             <td><img ng-src="{{ad.imageUrl[2]}}"></img>
             </td>
         </tr>
-    </table>
+    </table> </br> </br> </br>
     <div>
-        Add-Id:<input type="number" ng-model="adsid" /> <br/> Add-Name: <input type="text" ng-model="adsname" /> <br/> Description:
+        <h3>Enter the below details to Add/Update/Inactive Ads</h3>
+        Add-Id<input type="number" ng-model="adsid" /> <br/> Add-Name: <input type="text" ng-model="adsname" /> <br/> Description:
         <input type="text" ng-model="description" /> <br /> Price($): <input type="number" ng-model="price" /> <br /> Image-1:
         <input type="text" ng-model="image0" /> <br /> Image-2: <input type="text" ng-model="image1" /> <br /> Image-3: <input
             type="text" ng-model="image2" /> <br />
         <button ng-click="addAds()">Add Ad</button>
-        <button ng-click="editAds()">Edit Ad</button>
+        <button ng-click="editAds()">Update Ad</button>
+        <button ng-click="inactiveAds()">Inactive Ad</button>
+    </div><br /><br />
+
+
+
+    <div>
+        <button ng-click="inbox()">Inbox</button>
+        <div ng-repeat="msg in messages">{{msg.id}} --sent by {{msg.name}}</div>  <br /><br />
     </div>
+
+
 </div>

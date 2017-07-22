@@ -43,7 +43,7 @@ var app = angular.module("classifieds", ["ui.router"])
             });
     });
 app.controller("loginController", function ($scope, $http, $state) {
-    $scope.username = "User1";
+    $scope.username = "Anusha";
     $scope.password = "12345";
     $scope.login = function () {
         if (!$scope.username) {
